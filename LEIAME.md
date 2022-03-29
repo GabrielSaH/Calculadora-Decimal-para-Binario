@@ -1,4 +1,6 @@
 # Calculadora-Decimal-para-Binario
+eu fiz esse progama para me ajudar nas aulas de conversao numerica na faculdade, essa é uma explicaçao resumida dos processos passo a passo que foram usados no progama
+
 o progama é divido em 3 funçoes que tem que se interconectar algumas vezes e sao utilizadas para calcular a parte inteira do numero e a decimal separadamente.
 
   a primeira funçao -> (contadorDecimais) recebe um numero real com virgula, que eu vou atribuir nessa expliçao 12,016 e separa a sua parte inteira da sua parte 
