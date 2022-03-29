@@ -22,7 +22,7 @@ def fracaoBinario(objetivo):
     modoBinario = []  
     while not resultado == objetivo:
         denominadorTeste = 2**numeroTeste
-        decimalTeste = f"1/{denominadorTeste}"
+        decimalTeste = {denominadorTeste}
         fracaoTeste = 1/denominadorTeste
         resultadoTeste = resultado + fracaoTeste
         if objetivo > resultado:
@@ -44,10 +44,16 @@ def fracaoBinario(objetivo):
            numeroBinario = modoBinario[:bits]
            numeroDecimalSaida = "".join([str(numeral) for numeral in numeroBinario])
            return (numeroDecimalSaida)
+        if len(modoBinario) == bits:
+            numeroBinario = modoBinario[:bits]
+            numeroDecimalSaida = "".join([str(numeral) for numeral in numeroBinario])
+            return (numeroDecimalSaida)
 
 # progama que transforma inteiros em binarios
 def inteiroBinario(numeroInteiro):
     numeroString = str(numeroInteiro)
+    if numeroInteiro < 1:
+        return ("0")
     lista = numeroString.split(".")
     numeroInteiro = int(lista[0])
     numeroTemporario = numeroInteiro
