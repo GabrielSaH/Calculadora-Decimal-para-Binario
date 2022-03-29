@@ -17,11 +17,17 @@ decimalInt = a forma inteira da decimal (0,016 -> 16)
 para decimal usando o metodo de multiplicaçao de valor decimal da base 10, onde multiplicamos um valor pela base desejada, no caso 2, adicionamos oque passar para 
 a parte decimal no numero e seguimos o processo no numero decimal caso nao passe nada adicionamos o zero e seguimos o processo:
 0.016 * 2 = 0.032 -> 0
+
 0.032 * 2 = 0.064 -> 00
+
 0.064 * 2 = 0.128 -> 000
+
 0.128 * 2 = 0.256 -> 0000
+
 0.256 * 2 = 0.512 -> 00000
+
 0.512 * 2 = 1.24 -> 000001
+
 e assim por diante, a funçao adiciona os resultados de 0 e 1 numa lista, quando a conta terminar ela separa a lista pelo numero de bits que o usuario pediu e readiciona
 os numero em uma string
   
