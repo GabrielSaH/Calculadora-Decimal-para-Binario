@@ -1,0 +1,36 @@
+Decimal-to-Binary-Calculator
+i made this program to help me with numerical conversation classes in college, this is a short explanation of the step by step processes that were used in the program
+
+the program is divided into 3 functions that sometimes interconnect and are used to calculate an integer part of the number and a decimal part.
+
+the first function -> (contadorDecimais) receives a real number with a comma, which I will sign, in this explanation as 16 and separates its integer part from its decimal part, however, converted to string, then the integer part is used to separate the decimal part of the original number, using the operation {original number - integer part = decimal part or 12.016 - 12 = 0.016} this way we have a number starting at 0 with a comma. this number is saved in two variables, decimalStr for a string version of the number, and decimalFloat for a float version of the number. right after that the function checks the number of characters in decimalStr and uses it in a operation, where x = {number of places in decimalStr - 2}, the -2 is added to compensate for the "0" and the ".", in this way we have the result as the number of decimal places of the original number (this information is useful later on). the function then returns 3 attributes y = the exponent that in base 10 converts 0.016 to integer or vice versa, in this case 1000 (0.016 * 1000 = 16 or 16 : 1000 = 0.016) decimalStr = the string form of decimal decimalInt = a integer form of decimal (0.016 -> 16)
+
+the second function -> (fracaoBinario) receives the same real number and makes use of the first function to receive its collected data. after that it converts the number to decimal using the method of multiplication of decimal value of base 10, where we multiply a value by the desired base, in case 2, we add whatever turn to integer to the final result if nothing turns to integer we add the 0, repeat that until the number is solved:
+
+0.016 * 2 = 0.032 -> 0
+
+0.032 * 2 = 0.064 -> 00
+
+0.064 * 2 = 0.128 -> 000
+
+0.128 * 2 = 0.256 -> 0000
+
+0.256 * 2 = 0.512 -> 00000
+
+0.512 * 2 = 1.24 -> 000001
+
+and so on, the function adds the results of 0 and 1 to a list, when it finishes it separates the list of numbers in a quantity of characters equal to the bits that the user asked for and re-adds the numbers into a string
+
+the third function takes the same real number, uses the same process in the first function but keeping the integral, and then uses a similar method of the second function, where it devides the number by two, the remainder is added to a list, if the remainder is equal to 0 add the zero, then the quotient is divided by two and so on
+
+12 / 2 = 6 -> 0
+
+6 / 2 = 3 -> 00
+
+3/2 = 1 -> 001
+
+1/2 = null -> 0011
+
+when finished it adds the numbers into a string, however, because of the nature of the method it is necessary to invert the list before the final result, so 0011 = 1100, 12 from decimal to binary = 1100
+
+and finally on the individual lines of the program it gathers the decimal part with the integer part and prints the result
