@@ -1,34 +1,69 @@
-bits = int(input("quantos bits?")) # quantidade de casas da resposta em binario
-objetivo = 56 / 1000  #fraçao a ser representada (0,056 = 56/1000)
-denominador = 0  # setado para 0 pq é so para definir uma variavel antes do while
-resultado = 0   # setado para 0 pq é so para definir uma variavel antes do while
-numeroTeste = 1  # setado para 1 pq se for 0 o primeiro denominador deve ser 2**1
-resultadoTeste = 0  # setado para 0 pq é so para definir uma variavel antes do while
-listaDecimal = []  
-listaFracao = []  
-modoBinario = []  
-while not resultado == objetivo: # enquanto o resultado nao for igual ao objetivo repita o codigo abaixo:
-    denominadorTeste = 2**numeroTeste # o denominador da funçao
-    decimalTeste = f"1/{denominadorTeste}"  # tranformando a fraçao em string para o python nao resolver a divisao
-    fracaoTeste = 1/denominadorTeste
-    resultadoTeste = resultado + fracaoTeste
-    if objetivo > resultado:
-        if objetivo > resultadoTeste:
-            resultado += fracaoTeste
-            listaDecimal.append(fracaoTeste)
-            listaFracao.append(decimalTeste)
-            numeroTeste += 1
-            modoBinario.append("1")
-        if objetivo < resultadoTeste:
-            numeroTeste += 1
-            modoBinario.append("0")
-        if objetivo == resultadoTeste:
-            resultado += fracaoTeste
-            listaDecimal.append(fracaoTeste)
-            listaFracao.append(decimalTeste)
-            modoBinario.append("1")
-    if objetivo == resultado:
-        print(f"essa é a lista de decimais: {listaDecimal} \r \r")
-        print(f"essa é a lista de fraçao:{listaFracao} \r \r")
-        print(f"esse é o resultado no numero de bits pedidos: {modoBinario[:bits]}")
+# contador de casas decimais
+def contadorDecimais(numero):
+    numeroString = str(numero)
+    lista = numeroString.split(".")
+    inteiro = int(lista[0])
+    decimalStr = str(round(numero - inteiro, 9))
+    decimalFloat = float(round(numero - inteiro, 9))
+    x = (len(decimalStr) - 2)
+    y = 10 ** x
+    decimalInt = int(decimalFloat * y)
+    return (y, decimalStr, decimalInt)
 
+# parte fracionaria
+def fracaoBinario(objetivo):
+    divisor, decimalStr, decimalInt = contadorDecimais(objetivo)
+    objetivo = decimalInt / divisor
+    resultado = 0
+    numeroTeste = 1
+    resultadoTeste = 0 
+    listaDecimal = []  
+    listaFracao = []  
+    modoBinario = []  
+    while not resultado == objetivo:
+        denominadorTeste = 2**numeroTeste
+        decimalTeste = f"1/{denominadorTeste}"
+        fracaoTeste = 1/denominadorTeste
+        resultadoTeste = resultado + fracaoTeste
+        if objetivo > resultado:
+            if objetivo > resultadoTeste:
+                resultado += fracaoTeste
+                listaDecimal.append(fracaoTeste)
+                listaFracao.append(decimalTeste)
+                numeroTeste += 1
+                modoBinario.append("1")
+            if objetivo < resultadoTeste:
+                numeroTeste += 1
+                modoBinario.append("0")
+            if objetivo == resultadoTeste:
+                resultado += fracaoTeste
+                listaDecimal.append(fracaoTeste)
+                listaFracao.append(decimalTeste)
+                modoBinario.append("1")
+        if objetivo == resultado:
+           numeroBinario = modoBinario[:bits]
+           numeroDecimalSaida = "".join([str(numeral) for numeral in numeroBinario])
+           return (numeroDecimalSaida)
+
+# progama que transforma inteiros em binarios
+def inteiroBinario(numeroInteiro):
+    numeroString = str(numeroInteiro)
+    lista = numeroString.split(".")
+    numeroInteiro = int(lista[0])
+    numeroTemporario = numeroInteiro
+    numeroBinario = []
+    while numeroTemporario != 1:
+        sobra = numeroTemporario % 2
+        numeroTemporario = int(numeroTemporario / 2)
+        numeroBinario.append(sobra)
+    if numeroTemporario == 1:
+        numeroBinario.append(1)
+    numeroBinario.reverse()
+    numeroBinarioSaida = "".join([str(numeral) for numeral in numeroBinario])
+    return(numeroBinarioSaida)
+
+numero = float(input("numero real na base 10 que quer converter: [ex: 6.12]"))
+bits = int(input("quantos bits para a parte decimal do binario?"))
+parteFracao = fracaoBinario(numero)
+parteInteiro = inteiroBinario(numero)
+print(f'{numero} transformado para binario fica {parteInteiro}.{parteFracao}')
