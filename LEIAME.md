@@ -28,18 +28,20 @@ a parte decimal no numero e seguimos o processo no numero decimal caso nao passe
 
 0.512 * 2 = 1.24 -> 000001
 
-e assim por diante, a funçao adiciona os resultados de 0 e 1 numa lista, quando a conta terminar ela separa a lista pelo numero de bits que o usuario pediu e readiciona
-os numero em uma string
+e assim por diante, a funçao adiciona os resultados de 0 e 1 numa lista, quando a conta terminar ela separa a lista pelo numero de bits que o usuario pediu e readiciona os numero em uma string
   
- a terceira funça -> recebe o mesmo numero real, apartir do processo que usamos na primeira funçao conseguimos separar o numero inteiro dessa vez, a funçao entao converte
-o numero inteiro para binario usando o metodo de divisao, onde dividimos o numero inteiro pela base desejada e entao colocamos a sobra na parte inteira do resultado
-caso nao tenha sobra é colocado o 0 e seguimos o processo
+ 
+  a terceira funça -> recebe o mesmo numero real, apartir do processo que usamos na primeira funçao conseguimos separar o numero inteiro dessa vez, a funçao entao converte o numero inteiro para binario usando o metodo de divisao, onde dividimos o numero inteiro pela base desejada e entao colocamos a sobra na parte inteira do resultado caso nao tenha sobra é colocado o 0 e seguimos o processo
+
 12 / 2 = 6 -> 0
+
 6 / 2 = 3 -> 00
+
 3 / 2 = 1 -> 001
+
 1/2 = nulo -> 0011
-e assim por diante, a funçao adiciona os resultados de 0 e 1 numa lista, quando a conta terminar ela readiciona os numero em uma string, porem, por causa da natureza do 
-metodo é necessario inverter a lista antes de dar o resultado, assim 0011 = 1100, 12 para decimal = 1100
+
+e assim por diante, a funçao adiciona os resultados de 0 e 1 numa lista, quando a conta terminar ela readiciona os numero em uma string, porem, por causa da natureza do  metodo é necessario inverter a lista antes de dar o resultado, assim 0011 = 1100, 12 para decimal = 1100
 
 e finalmente nas linhas individuais do progama ele reuni a parte decimal com a parte inteira e imprimi o resultado
   
